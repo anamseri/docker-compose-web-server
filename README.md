@@ -79,6 +79,7 @@ docker compose up -d
 or:
 docker compose up -d --build
 
+
 Rebuild:
 docker compose down -v
 docker builder prune -af
@@ -141,7 +142,7 @@ sudo chmod -R 775 ./wwwapp
 docker compose restart
 ```
 
-> [!NOTE] INSTALL NEW LARAVEL
+> **INSTALL NEW LARAVEL**
 >
 > ```bash
 > docker compose exec -w /var/www/wwwapp app composer create-project --no-dev laravel/laravel .
@@ -149,7 +150,7 @@ docker compose restart
 > docker compose exec app composer create-project --no-dev laravel/laravel .
 > ```
 
-> [!NOTE] CLONE OR UPLOAD LARAVEL PROJECT
+> **CLONE OR UPLOAD LARAVEL PROJECT**
 >
 > ```bash
 > docker compose exec -u www-data app git clone https://github.com/laravel/laravel.git .
@@ -159,7 +160,8 @@ docker compose restart
 > sudo chown -R www-data:www-data wwwapp/*
 >
 >
-> **_Update vendor:_**
+>
+> ***Update vendor:***
 >
 > docker compose exec -w /var/www/wwwapp app composer install --no-dev --optimize-autoloader --no-interaction
 > or:
@@ -199,6 +201,7 @@ DB_PASSWORD=dbpassword
 docker compose exec app find /var/www/wwwapp -type d -exec chmod 755 {} \;
 or:
 docker compose exec app find -type d -exec chmod 755 {} \;
+
 
 docker compose exec app find /var/www/wwwapp -type f -exec chmod 644 {} \;
 or:
