@@ -1,0 +1,73 @@
+services:
+  app:
+    image: ${PHP_IMAGE}
+    build:
+      context: ./php
+      args:
+        PATH_VAR_WWW: ${PATH_VAR_WWW}
+        HOST_UID: ${HOST_UID}
+        HOST_GID: ${HOST_GID}
+    volumes:
+      - ./${PATH_APP}:/var/www/${PATH_VAR_WWW}:cached
+    container_name: "${CONTAINER_NAME}-app"
+    restart: unless-stopped
+    environment:
+      DB_DATABASE: ${DB_NAME}
+      DB_USERNAME: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      TZ: ${TZ}
+    networks:
+      - netnginx
+    depends_on:
+      - db
+
+  nginx:
+    image: ${NGINX_IMAGE}
+    environment:
+      PATH_VAR_WWW: ${PATH_VAR_WWW}
+      DOMAIN: ${DOMAIN}
+    volumes:
+      - ./nginx/templates/default.conf.template:/etc/nginx/templates/default.conf.template:ro
+      - ./${PATH_APP}:/var/www/${PATH_VAR_WWW}:ro
+    container_name: "${CONTAINER_NAME}-nginx"
+    restart: unless-stopped
+    networks:
+      - netnginx
+    ports:
+      - "${PORT_HTTP}:80"
+      # - "xxx.xxx.xxx.xxx:${PORT_HTTP}:80"     # bind hanya ke IP server
+    depends_on:
+      - app
+
+  db:
+    image: ${DB_IMAGE}
+    container_name: "${CONTAINER_NAME}-db"
+    volumes:
+      - ./mysql/dbdata:/var/lib/mysql
+      - ./mysql/conf.d:/etc/mysql/conf.d:ro
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      TZ: ${TZ}
+    networks:
+      - netnginx
+
+  # phpmyadmin:
+  #   image: ${PHPMYADMIN_IMAGE}
+  #   container_name: "${CONTAINER_NAME}-pmyadmin"
+  #   restart: unless-stopped
+  #   ports:
+  #     # - "${PORT_PMYADMIN}:80"
+  #     - "192.168.1.103:${PORT_PMYADMIN}:80" # bind hanya ke IP server
+  #   environment:
+  #     PMA_HOST: ${PMA_HOST}
+  #     PMA_PORT: ${PMA_PORT}
+  #   networks:
+  #     - netnginx
+
+networks:
+  netnginx:
+    driver: bridge
