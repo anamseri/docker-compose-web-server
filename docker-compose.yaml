@@ -35,7 +35,7 @@ services:
       - netnginx
     ports:
       - "${PORT_HTTP}:80"
-      # - "xxx.xxx.xxx.xxx:${PORT_HTTP}:80"     # bind hanya ke IP server
+      # - "xxx.xxx.xxx.xxx:${PORT_HTTP}:80"     # bind to IP server
     depends_on:
       - app
 
@@ -54,19 +54,6 @@ services:
       TZ: ${TZ}
     networks:
       - netnginx
-
-  # phpmyadmin:
-  #   image: ${PHPMYADMIN_IMAGE}
-  #   container_name: "${CONTAINER_NAME}-pmyadmin"
-  #   restart: unless-stopped
-  #   ports:
-  #     # - "${PORT_PMYADMIN}:80"
-  #     - "192.168.1.103:${PORT_PMYADMIN}:80" # bind hanya ke IP server
-  #   environment:
-  #     PMA_HOST: ${PMA_HOST}
-  #     PMA_PORT: ${PMA_PORT}
-  #   networks:
-  #     - netnginx
 
 networks:
   netnginx:
