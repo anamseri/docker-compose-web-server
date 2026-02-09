@@ -63,6 +63,7 @@ RUN { \
 } > /usr/local/etc/php/conf.d/opcache.ini
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+RUN chmod +x /usr/bin/composer
 
 USER www-data
 

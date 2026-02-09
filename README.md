@@ -142,6 +142,33 @@ sudo chmod -R 775 ./wwwapp
 docker compose restart
 ```
 
+🔹 Check composer in app container
+
+```bash
+Try running:
+docker compose exec app which composer
+
+or:
+docker compose exec app composer --version
+```
+
+<sup>_If empty, app container has no composer binary._</sup>
+<sub>_The solution is to rebuild the PHP image without cache._</sub>
+
+```bash
+docker compose build --no-cache app
+
+Restart container:
+docker compose up -d
+
+Check again:
+docker compose exec app composer --version
+```
+
+<sup>Composer version 2.9.5 2026-01-29 11:40:53</sup>
+<sup>PHP version 8.4.17 (/usr/local/bin/php)</sup>
+<sup>...</sup>
+
 > **INSTALL NEW LARAVEL**
 >
 > ```bash
