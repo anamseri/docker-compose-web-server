@@ -74,17 +74,11 @@ chmod +x set-permissions.sh
 ## Deploy Docker Compose
 
 ```bash
-docker compose up -d
-
-or:
-docker compose up -d --build
-
-
-Rebuild:
-docker compose down -v
-docker builder prune -af
 docker compose build --no-cache
 docker compose up -d
+
+Rebuild:
+docker compose up -d --build
 ```
 
 🔹 Check container:
