@@ -5,6 +5,8 @@ ENV PATH_VAR_WWW=${PATH_VAR_WWW}
 ARG HOST_UID=${HOST_UID}
 ARG HOST_GID=${HOST_GID}
 
+USER root
+
 RUN apk add --no-cache \
     bash \
     git \
