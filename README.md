@@ -183,14 +183,15 @@ docker compose exec app composer --version
 > docker compose exec -u www-data app git clone https://github.com/laravel/laravel.git .
 >
 >
-> Or: (Dev Only, Not Production)
+> Or:
 > Upload Laravel project into the ./wwwapp directory
-> Then:
+>
+> set owner:
 > sudo chown -R www-data:www-data wwwapp/*
 >
 >
 >
-> Update vendor:
+> update vendor:
 >
 > docker compose exec -w /var/www/wwwapp app composer install --no-dev --optimize-autoloader --no-interaction
 > or:
