@@ -218,7 +218,7 @@ sudo nano wwwapp/.env
 DB_CONNECTION=mysql
 DB_HOST=db
 DB_PORT=3306
-DB_DATABASE=dblaranginx
+DB_DATABASE=dblaravelapp
 DB_USERNAME=dbuser
 DB_PASSWORD=dbpassword
 ```
@@ -274,6 +274,14 @@ or:
 docker compose exec app php artisan migrate
 ```
 
+🔹 Optional: Clear
+
+```bash
+docker compose exec app php /var/www/wwwapp/artisan optimize:clear
+or:
+docker compose exec app php artisan optimize:clear
+```
+
 🔹 Optional: Optimize
 
 ```bash
@@ -296,4 +304,16 @@ docker compose restart
 
 ```bash
 http://<IP-HOST>:8081
+
+Example:
+http://192.168.1.103:8081
+
+phpmyadmin
+http://192.168.1.103:8080
+```
+
+🔹 Prod mode
+
+```bash
+docker compose stop phpmyadmin
 ```
