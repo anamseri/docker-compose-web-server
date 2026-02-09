@@ -1,5 +1,5 @@
 services:
-  app:
+  php:
     image: ${PHP_IMAGE}
     build:
       context: ./php
@@ -9,7 +9,7 @@ services:
         HOST_GID: ${HOST_GID}
     volumes:
       - ./${PATH_APP}:/var/www/${PATH_VAR_WWW}:cached
-    container_name: "${CONTAINER_NAME}-app"
+    container_name: "${CONTAINER_NAME}-php"
     restart: unless-stopped
     environment:
       DB_DATABASE: ${DB_NAME}
@@ -52,6 +52,19 @@ services:
       MYSQL_PASSWORD: ${DB_PASSWORD}
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
       TZ: ${TZ}
+    networks:
+      - netnginx
+
+  phpmyadmin:
+    image: ${PHPMYADMIN_IMAGE}
+    container_name: "${CONTAINER_NAME}-pmyadmin"
+    restart: unless-stopped
+    ports:
+      # - "${PORT_PMYADMIN}:80"
+      - "192.168.1.103:${PORT_PMYADMIN}:80" # bind hanya ke IP server
+    environment:
+      PMA_HOST: ${PMA_HOST}
+      PMA_PORT: ${PMA_PORT}
     networks:
       - netnginx
 

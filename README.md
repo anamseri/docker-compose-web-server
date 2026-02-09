@@ -110,10 +110,10 @@ docker compose exec nginx ping app
 🔹 Access
 
 ```bash
-http://<IP-HOST>:8080
+http://<IP-HOST>:8081
 
 Example:
-http://192.168.1.103:8080
+http://192.168.1.103:8081
 ```
 
 # Install or Upload Laravel Project
@@ -267,5 +267,5 @@ docker compose restart
 🔹 Access in browser
 
 ```bash
-http://<IP-HOST>:8080
+http://<IP-HOST>:8081
 ```
