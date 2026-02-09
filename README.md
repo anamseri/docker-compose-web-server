@@ -167,7 +167,7 @@ docker compose exec app composer --version
 ```
 
 <sup>Composer version 2.x.x xxx-xx-xx xx:xx:xx</sup><br>
-<sup>PHP version 8.4.xx (/usr/local/bin/php)</sup>
+<sup>PHP version 8.4.xx (...)</sup>
 
 > **INSTALL NEW LARAVEL**
 >
