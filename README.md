@@ -153,7 +153,8 @@ docker compose exec app composer --version
 ```
 
 <sup>_If empty, app container has no composer binary._</sup>
-<sub>_The solution is to rebuild the PHP image without cache._</sub>
+
+- _The solution is to rebuild the PHP image without cache._
 
 ```bash
 docker compose build --no-cache app
@@ -165,7 +166,7 @@ Check again:
 docker compose exec app composer --version
 ```
 
-<sup>Composer version 2.x.x xxx-xx-xx xx:xx:xx</sup>
+<sup>Composer version 2.x.x xxx-xx-xx xx:xx:xx</sup><br>
 <sup>PHP version 8.4.xx (/usr/local/bin/php)</sup>
 
 > **INSTALL NEW LARAVEL**
