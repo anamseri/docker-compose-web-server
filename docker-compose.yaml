@@ -1,5 +1,5 @@
 services:
-  php:
+  app:
     image: ${PHP_IMAGE}
     build:
       context: ./php
@@ -37,7 +37,7 @@ services:
       - "${PORT_HTTP}:80"
       # - "xxx.xxx.xxx.xxx:${PORT_HTTP}:80"     # bind to IP server
     depends_on:
-      - php
+      - app
 
   db:
     image: ${DB_IMAGE}
