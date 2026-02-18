@@ -1,4 +1,4 @@
-# Production-Ready Docker Compose Web Server
+# Docker Compose Web Server (Development/Staging)
 
 ## Docker Compose based web server stack with Nginx and Laravel
 
@@ -18,8 +18,9 @@
 │ │ └── Dockerfile
 │ │ └── conf.d
 │ │ │ └── my.cnf
-│ ├── nginx/
-│ │ └── default.conf
+│ ├── nginx
+│ │ └── templates
+│ │ │ └── default.conf.template
 │ └── php/
 │ │ └── Dockerfile
 │ │ └── php.ini
