@@ -1,4 +1,4 @@
-# Docker Compose Web Server (Development/Staging)
+# Docker Compose Web Server
 
 ## Docker Compose based web server stack with Nginx and Laravel
 
